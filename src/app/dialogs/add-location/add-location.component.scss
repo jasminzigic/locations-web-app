@@ -1,0 +1,16 @@
+mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 !important;
+}
+
+@media screen and (orientation:landscape) and (min-width: 600px) {
+    mat-dialog-content {
+        max-height: 50vh;
+    }
+}

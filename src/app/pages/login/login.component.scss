@@ -1,0 +1,30 @@
+mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.submit {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+    margin: 0 !important;
+    flex-direction: column;
+    button {
+        margin: 10px auto;
+        width: 100%;
+    }
+}
+
+form {
+    display: block;
+    max-width: 800px;
+    margin: auto;
+    padding: 1em;
+    img {
+        width: 100%;
+    }
+}

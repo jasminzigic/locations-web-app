@@ -1,0 +1,25 @@
+form {
+    overflow: auto;
+    mat-form-field {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.submit-wrap {
+    display: block !important;
+    text-align: center;
+    button {
+        width: 100%;
+    }
+}
+
+form {
+    max-width: 800px;
+    margin: auto;
+    padding: 1em;
+    img {
+        width: 100%;
+    }
+}
+

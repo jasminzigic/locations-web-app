@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>{{ location ? 'Edit location' : 'Add location' }}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="addLocationForm" (ngSubmit)="onSubmit()">
+        <mat-dialog-content>
+            <mat-form-field>
+                <input matInput placeholder="Name" type="text" max="50" required formControlName="name"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                <mat-error *ngIf="f.name.errors">
+                    <span *ngIf='f.name.errors.required'>Location name is required!</span>
+                    <span *ngIf='f.name.errors.minlength'>Location name must have at least 3 characters!</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Address" type="text" max="50" formControlName="address"
+                    [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+                <mat-error *ngIf="f.name.errors">
+                    <span *ngIf='f.name.errors.minlength'>Address must have at least 3 characters!</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select formControlName="city" placeholder="City" required>
+                    <mat-option *ngFor="let city of cities" [value]='city.name'>{{city.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="f.city.errors">
+                    <span *ngIf='f.city.errors.required'>You must select city!</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Longitude" type="number" formControlName="longitude"
+                    [ngClass]="{ 'is-invalid': submitted && f.longitude.errors }" />
+                <mat-error *ngIf="f.longitude.errors">
+                    Please enter a valid longitude!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Latitude" type="number" formControlName="latitude"
+                    [ngClass]="{ 'is-invalid': submitted && f.latitude.errors }" />
+                <mat-error *ngIf="f.latitude.errors">
+                    Please enter a valid latitude!
+                </mat-error>
+            </mat-form-field>
+        </mat-dialog-content>
+        <mat-dialog-actions class="submit">
+            <button mat-fab color='primary' matTooltip='Save' matTooltipPosition="right"
+                [disabled]="addLocationForm.invalid" type="submit">
+                <mat-icon>done</mat-icon>
+            </button>
+            <button mat-fab color='primary' type="button" matTooltip='Set to current location' matTooltipPosition="above" (click)="setToCurrentCoordinates();">
+                <mat-icon>my_location</mat-icon>
+            </button>
+            <button mat-fab color='warn' type="button" matTooltip='Cancel' matTooltipPosition="left" [mat-dialog-close]>
+                <mat-icon>clear</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </form>
+</div>

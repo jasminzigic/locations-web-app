@@ -1,0 +1,15 @@
+<div class="main-wrap">
+    <agm-map [usePanning]="true" [latitude]="location.latitude" [longitude]="location.longitude" [zoom]="15"
+        [fullscreenControl]='true' [mapTypeControl]='true' [streetViewControl]='true'>
+        <agm-marker [latitude]="location.latitude" [longitude]="location.longitude">
+            <agm-info-window #markerInfo>
+                {{location.address}}
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
+    <div class="icons-wrap">
+        <button color='primary' *ngIf="!editing" mat-fab (click)="editLocation();" matTooltip="Edit location">
+            <mat-icon>edit_location</mat-icon>
+        </button>
+    </div>
+</div>

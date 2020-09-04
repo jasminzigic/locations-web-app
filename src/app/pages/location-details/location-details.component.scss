@@ -1,0 +1,43 @@
+.main-wrap {
+    position: relative;
+    height: calc(100vh - 120px);
+    button.close {
+        position: absolute;
+        right: -30px;
+        top: -25px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: #f37a7a;
+        cursor: pointer;
+    }
+    agm-map {
+        height: 100% !important;
+        height: -moz-available;          /* WebKit-based browsers will ignore this. */
+        height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+        height: stretch;
+        position: relative;
+    }
+    .icons-wrap {
+        display: flex;
+        justify-content: space-around;
+        position: sticky;
+        bottom: 1em;
+        width: 80%;
+        margin: auto;
+        padding: 0;
+        z-index: 90000000000000000000000000000;
+    }
+    .address {
+        text-align: center;
+        position: absolute;
+        top: 0;
+        z-index: 999999;
+        width: 100%;
+        background: #fafafa;
+        padding: .5em 0;
+        margin: 0;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+}

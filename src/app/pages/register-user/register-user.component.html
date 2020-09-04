@@ -1,0 +1,42 @@
+<div class="page">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <img *ngIf="!user" src="assets/locations.png" alt='Locations'>
+    <mat-form-field>
+      <input matInput placeholder="User name" type="text" required formControlName="userName" />
+      <mat-error *ngIf="f.userName.errors">
+        <span *ngIf='f.userName.errors.required'>User name is required!</span>
+        <span *ngIf='f.userName.errors.minlength'>User name must have at least 3 characters!</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="user">
+      <input (keyup)='errorMessage = null' matInput placeholder="Current password" formControlName="currentPassword"
+        required type="password" />
+      <mat-error *ngIf="f.currentPassword.errors">
+        Current password is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #password [placeholder]="this.user ? 'New password' : 'Password'" type="password" required
+        formControlName="password" />
+      <mat-error *ngIf="f.password.errors">
+        {{(f.password.errors.required) ? 'Password is required!' : 'Password is to short'}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #confirmPassword [placeholder]="this.user ? 'Confirm new password' : 'Confirm password'" required
+        pattern="{{ password.value }}" type="password" formControlName="passwordConfirm" />
+      <mat-error *ngIf="f.passwordConfirm.errors">
+        Password confirmation do not match
+      </mat-error>
+    </mat-form-field>
+    <div class="submit-wrap">
+      <button mat-flat-button color='primary' matTooltip='Register' matTooltipPosition="above"
+        [disabled]="registerForm.invalid" type="submit">
+        <mat-icon>how_to_reg</mat-icon>{{user ? 'Set new password' : 'Register'}}
+      </button>
+      <button mat-flat-button color='primary' matTooltip='Logout' (click)="logout();" style="margin-top: .5rem;" matTooltipPosition="below" *ngIf="user">
+        <mat-icon>exit_to_app</mat-icon>Logout
+      </button>
+    </div>
+    </form>
+    </div>

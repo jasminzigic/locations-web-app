@@ -1,0 +1,25 @@
+<div class="page">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <img src="assets/locations.png" alt='Locations'>
+    <mat-dialog-content>
+        <mat-form-field>
+          <input matInput placeholder="User name" type="text" required formControlName="userName" />
+          <mat-error *ngIf="f.userName.errors">
+              User name is required!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #password placeholder="Password" required type="password" formControlName="password" />
+          <mat-error *ngIf="f.password.errors">
+            Password is required!
+          </mat-error>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-flat-button color='primary' matTooltip='Login' matTooltipPosition="above" [disabled]="loginForm.invalid" type="submit"><mat-icon>how_to_reg</mat-icon>Login</button>
+        <button mat-flat-button color='primary' matTooltip='Create new account' matTooltipPosition="above" type="button" (click)="createAccount()"><mat-icon>person_add</mat-icon>Create account</button>
+    </mat-dialog-actions>
+  </form>
+</div>
+
+
